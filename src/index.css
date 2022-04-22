@@ -1,13 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: 'montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: white;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: 'Courier New', monospace;
+}
+
+header {
+    position: relative;
+    background-image: url(../public/img/todo-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header nav.navbar {
+    background-color: transparent !important;
+}
+
+.header-div {
+    min-height: 400px;
+    width: 100%;
+}
+
+.task-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.heading {
+    text-align: center;
+}
+
+.task-input {
+    color: #005f73;
+    font-weight: bold;
+    margin-right: 20px;
+    border: none;
+    background-color: transparent;
+    width: 350px;
+    height: 40px;
+    outline: none;
+    padding: 10px;
+    border-bottom: 2px solid #005f73;
+    border-radius: 5px;
+}
+
+.task-input::placeholder {
+    color: #005f73;
+    font-weight: 600;
+}
+
+.form-select {
+    background-color: #005f73;
+    border: 2px solid #005f73;
+    color: white;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.task-btn {
+    background-color: transparent;
+    border: 2px solid #005f73;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.task-btn:hover {
+    background-color: #005f73;
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.no-img-text {
+    font-weight: bold;
+    font-size: 24px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.empty-text {
+    color: black;
+    font-weight: bold;
+    font-size: 44px;
+    font-family: 'Dancing Script', cursive;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 0.7s linear infinite forwards;
+}
+
+.empty-text:hover {
+    color: linear-gradient(335deg, rgba(34, 193, 195, 1) 50%, rgba(176, 147, 85, 1) 100%);
+}
+
+@keyframes bounce {
+    0% {
+        top: 50%;
+    }
+    50% {
+        top: 47%;
+    }
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    /* width: 350px; */
+    background-color: #003049;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.list-item-wrapper {
+    width: 100%;
+}
+
+.items-text {
+    color: #94d2bd;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    border: none;
+    background-color: #003049;
+    outline: none;
+}
+
+.icons-button {
+    padding: 6px!important;
+}
+
+.items-icon {
+    color: #94d2bd;
+    font-size: 16px;
+    padding: 6px;
+}
+
+.icons-button i {
+    color: #94d2bd;
+}
+
+.items-remove-all {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none!important;
+}
+
+.form-check-input {
+    background-color: transparent;
+    border: 1px solid #005f73;
+    margin-right: 5px;
+}
+
+.bg-checked {
+    background-color: #52796f;
+    color: white;
+}
+
+.bg-checked .list-item-wrapper .todo-item {
+    background-color: #52796f;
+    color: white;
+}
+
+.bg-checked .icons-container .items-icon {
+    color: white;
+}
+
+.animated {
+    animation: newAnim 0.8s linear 1 forwards;
+}
+
+@keyframes newAnim {
+    0% {
+        transform: translateX(0%);
+    }
+    50% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    99% {
+        transform: translateX(120%);
+        opacity: 0;
+        height: auto;
+        display: block;
+    }
+    100% {
+        transform: translateX(120%);
+        opacity: 0;
+        height: 0px;
+        display: none;
+    }
+}
+
+
+/* Style the color of the message that says 'No file chosen' */
+
+[type="file"] {
+    display: none;
+}
+
+.btn-2 {
+    font-family: inherit;
+    background-color: #005f73;
+    font-size: 16px;
+    border: 2px solid #005f73;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    font-weight: 600;
+    padding: 5px 10px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.btn-2:hover {
+    background-color: transparent;
+    border: 2px solid #005f73;
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+}
+
+.border-edit {
+    border-bottom: 1px solid #94d2bd;
+}
+
+
+/* SIgnup css */
+
+.signup-form {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    background-color: cadetblue;
+    padding: 30px;
+    width: 450px;
+    border-radius: 10px;
+}
+
+
+/* Login CSS */
+
+.login-form {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: cadetblue;
+    padding: 30px;
+    width: 450px;
+    border-radius: 10px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Dancing Script', cursive;
+}
+
+#email,
+#password,
+#name {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 6px;
+}
+
+#email:focus,
+#password:focus,
+#name:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    border-radius: 6px;
+}
+
+.btn-login {
+    background-color: lightcoral;
+    width: 100%;
+    padding: 5px 0;
+    border: none;
+    border-radius: 7px;
+    font-weight: 600;
+    color: white;
+}
+
+.login-link {
+    color: black;
+    background-color: white;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.login-link:hover,
+.signup-link:hover {
+    color: black;
+}
+
+.signup-link {
+    color: black;
+    background-color: white;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 10px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.active-link {
+    background-color: lightcoral;
+}
+
+.err {
+    color: red;
+}
+
+.err-msg {
+    border-bottom: 1px solid red!important;
 }
